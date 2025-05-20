@@ -14,6 +14,10 @@ CREATE TABLE Billing (
     consumer_id INT NOT NULL,
     units INT NOT NULL,
     amount DECIMAL(10,2) NOT NULL,
-    billing_date DATE DEFAULT CURRENT_DATE,
-    FOREIGN KEY (consumer_id) REFERENCES Consumer(id)
+    billing_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_consumer
+        FOREIGN KEY (consumer_id) REFERENCES Consumer(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
+
